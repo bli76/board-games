@@ -1,13 +1,3 @@
-function sleep (ms)
-{
-    let start = new Date().getTime();
-    for (let i = 0; i < 1e7; ++i)
-    {
-        if (new Date().getTime() - start > ms)
-            break;
-    }
-}
-
 ////////////////////
 //  BEGIN sudoku  //
 ////////////////////
@@ -226,7 +216,12 @@ sudoku.checkWin = function ()
 //   END sudoku   //
 ////////////////////
 
-sudoku.start(0);
+var difficulty = window.location.href.charAt(window.location.href.length-1);
+
+if (isNaN(difficulty))
+    sudoku.start(1);
+else
+    sudoku.start(Number(difficulty));
 
 //////////////////////////
 //  BEGIN selectedCell  //
@@ -308,6 +303,10 @@ selectedCell.flashRed = function (other)
 //   END selectedCell   //
 //////////////////////////
 
+///////////////////////////
+//  BEGIN eventListener  //
+///////////////////////////
+
 var keyRepeat = false;
 
 document.addEventListener("keypress", (event) =>
@@ -322,9 +321,7 @@ document.addEventListener("keypress", (event) =>
         selectedCell.deselect();
 
         if (sudoku.checkWin())
-        {
             document.getElementById("win-text").style.opacity = 1;
-        }
     }
 });
 
@@ -332,3 +329,9 @@ document.addEventListener("keyup", (event) =>
 {
     keyRepeat = false;
 });
+
+///////////////////////////
+//   END eventListener   //
+///////////////////////////
+
+document.querySelector()
