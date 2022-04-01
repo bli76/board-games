@@ -321,7 +321,7 @@ document.addEventListener("keypress", (event) =>
         selectedCell.deselect();
 
         if (sudoku.checkWin())
-            document.getElementById("win-text").style.opacity = 1;
+            document.getElementByClassName("sudoku-bottom-text")[0].style.opacity = 1;
     }
 });
 
@@ -333,5 +333,3 @@ document.addEventListener("keyup", (event) =>
 ///////////////////////////
 //   END eventListener   //
 ///////////////////////////
-
-document.querySelector()
